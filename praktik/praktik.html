@@ -1,0 +1,53 @@
+Setting Router 1 
+
+1. interface print 
+2. ip address add address=172.16.228.1/16 interface=ether1 
+3. ip address add address=192.228.10.2/24/24 interface=ether2
+4. ip address print 
+5. ip route add gateway=172.16.0.1 6. ip route print 
+7. ip dns set servers=8.8.8.8 allow-remote-requests=yes 
+8. ip dns print 
+9. ip firewall nat add chain=srcnat action=masquerade out-interface=ether1
+
+Setting Web Proxy Router 1 
+1. ip proxy set enabled=yes port=3128 cache-administrator=27salentwahyusetiawan@smknudry.sch.id 
+2. ip firewall nat add chain=dstnat protocol=tcp dst-port=80 action=redirect to-ports=3128 in-interface=ether2 
+3. ip proxy access add dst-host=*medsi.stmikroyal.ac.id* action=key
+
+
+Setting Routing Dinamis Router 1
+
+1. routing ospf interface add interface=ether1
+2. routing ospf network add network=172.16.0.0/16 area=backbone
+3. routing ospf network add network=192.228.10.0/24 area=backbone
+
+
+Setting Router 2
+
+1.interface print
+2. ip address add address=172.16.228.2/16 interface=ether1
+3. ip address add address=192.228.20.1/24 interface=wlan1
+4. ip address print
+5. ip route add gateway=172.16.0.1
+6. ip route print
+7. ip dns set servers=8.8.8.8 allow-remote-requests=yes
+8. ip dns print
+9. ip firewall nat add chain=srcnat action=masquerade out-interface=ether1
+10. interface enable wlan1
+11. interface wireless set 0 mode=ap-bridge ssid=SalentWahyuSetiawan frequency=2437 band=2ghz-b/g/n
+12. interface wireless print
+13. interface wireless security-profiles set 0 mode=dynamic-keys authentication-types=wpa2-psk wpa2-pre-shared-key=Salent09
+14. interface wireless security-profiles print
+15. ip dhcp-server setup
+interface=wlan1 lease-time=8h
+
+Setting Routing Dinamis di Router 2
+
+1. routing ospf interface add interface=ether1
+2. routing ospf network add network=172.16.0.0/16 area=backbone
+3. routing ospf network add network=192.228.20.0/24 area=backbone
+
+
+
+
+
