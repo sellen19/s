@@ -10,7 +10,7 @@ Setting Router 1
 9. ip firewall nat add chain=srcnat action=masquerade out-interface=ether1
 
 Setting Web Proxy Router 1 
-1. ip proxy set enabled=yes port=3128 cache-administrator=27salentwahyusetiawan@smknudry.sch.id 
+1. ip proxy set enabled=yes port=3128 cache-administrator=27namasiswa@smknudry.sch.id 
 2. ip firewall nat add chain=dstnat protocol=tcp dst-port=80 action=redirect to-ports=3128 in-interface=ether2 
 3. ip proxy access add dst-host=*medsi.stmikroyal.ac.id* action=key
 
@@ -34,9 +34,9 @@ Setting Router 2
 8. ip dns print
 9. ip firewall nat add chain=srcnat action=masquerade out-interface=ether1
 10. interface enable wlan1
-11. interface wireless set 0 mode=ap-bridge ssid=SalentWahyuSetiawan frequency=2437 band=2ghz-b/g/n
+11. interface wireless set 0 mode=ap-bridge ssid=joko frequency=2437 band=2ghz-b/g/n
 12. interface wireless print
-13. interface wireless security-profiles set 0 mode=dynamic-keys authentication-types=wpa2-psk wpa2-pre-shared-key=Salent09
+13. interface wireless security-profiles set 0 mode=dynamic-keys authentication-types=wpa2-psk wpa2-pre-shared-key=joko
 14. interface wireless security-profiles print
 15. ip dhcp-server setup
 interface=wlan1 lease-time=8h
